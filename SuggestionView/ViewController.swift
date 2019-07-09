@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController, SuggestionProtocol {
     var tableView = UITableView()
     var suggestionView = SuggestionView()
-    var suggestionList: [(company: String, model: String)] = []
-    var tableList: [(company: String, model: String)] = []
+    var suggestionList: [(animalType: String, name: String)] = []
+    var tableList: [(animalType: String, name: String)] = []
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -21,14 +21,12 @@ class ViewController: UIViewController, SuggestionProtocol {
     }
     
     func prepareArray() {
-        suggestionList = [(company: "Honda", model: "Honda CD 110 Dream"),
-                          (company: "Honda", model: "Honda CB Unicorn"),
-                          (company: "TVS", model: "TVS Jupiter"),
-                          (company: "TVS", model: "TVS Apache"),
-                          (company: "Hero Moto Corp", model: "Hero Achiever"),
-                          (company: "Hero Moto Corp", model: "Hero Passion Pro"),
-                          (company: "Hero Moto Corp", model: "Hero HF Deluxe"),
-                          (company: "Honda", model: "Honda Activa")]
+        suggestionList = [(animalType: "Invertebrates", name: "Octopus"),
+                          (animalType: "Fish", name: "Shark"),
+                          (animalType: "Amphibians", name: "Frog"),
+                          (animalType: "Reptiles", name: "Crocodiles"),
+                          (animalType: "Birds", name: "Eagle"),
+                          (animalType: "Mammals", name: "Tiger")]
     }
     
     func prepareUI() {
@@ -46,7 +44,7 @@ extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell", for: indexPath) as? TableCell
-        cell?.descriptionLabel.text = "\(tableList[indexPath.row].company) \n\(tableList[indexPath.row].model)"
+        cell?.descriptionLabel.text = "\(tableList[indexPath.row].name) \n\(tableList[indexPath.row].animalType)"
         return cell!
     }
 }

@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class SuggestionViewDataSource: NSObject, UICollectionViewDataSource {
-    private var suggestions: [(company: String, model: String)] = []
+    private var suggestions: [(animalType: String, name: String)] = []
     private var nextURL: String?
     private var getSelection: QECChatViewDelegateProtocol!
     
-    init(suggestions: [(company: String, model: String)]) {
+    init(suggestions: [(animalType: String, name: String)]) {
         self.suggestions = suggestions
     }
     
@@ -22,7 +22,7 @@ class SuggestionViewDataSource: NSObject, UICollectionViewDataSource {
         getSelection = vc
     }
     
-    func update(suggestions: [(company: String, model: String)], nextURL: String?) {
+    func update(suggestions: [(animalType: String, name: String)], nextURL: String?) {
         self.suggestions = suggestions
         self.nextURL = nextURL
     }
@@ -35,7 +35,7 @@ class SuggestionViewDataSource: NSObject, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestionCell", for: indexPath) as! SuggestionCell
         cell.prepareCellUI()
         cell.layoutIfNeeded()
-        cell.title.text = suggestions[indexPath.item].model
+        cell.title.text = suggestions[indexPath.item].name
         cell.layoutIfNeeded()
         return cell
     }
